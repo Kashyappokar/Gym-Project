@@ -38,3 +38,30 @@ const Data = [
 ]
 
 export default Data;
+
+export const initialValues = {
+  email: "",
+  password: "",
+  confirmPassword: ""
+}
+
+import * as Yup from 'yup'
+
+export const LoginSchema = Yup.object({
+    email: Yup.string().required("Email feild is a required feild.").email(),
+    password: Yup.string().required("Password is a required feild.").min(6, "Minimum 6 characters are required."),
+    confirmPassword: Yup.string().required("Confirm Password cannot be empty.").oneOf([Yup.ref('password'),null],"Password must be matched !")
+  }
+);
+
+export const SignUpSchema = Yup.object({
+  name: Yup.string().required("Name is a required field."),
+  email: Yup.string().required("Email is a required field.").email("Email must be vaild."),
+  password: Yup.string().required("Password is a required field.").min(6,"Password atleast of 6 characters!")
+})
+
+export const initialValues1 = {
+  name: "",
+  email: "",
+  password: ""
+}
