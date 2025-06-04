@@ -4,6 +4,7 @@ import Gallery from './components/screens/Gallery'
 import About from './components/screens/About'
 import LoginForm from './components/screens/LoginForm'
 import RegistrationForm from './components/screens/RegistrationForm'
+
 function App() {
 
   return (

@@ -1,6 +1,7 @@
 import NavBar from "../common/NavBar";
 import { useFormik } from 'formik'
 import { initialValues1, SignUpSchema } from "../constant/Data";
+
 const RegistrationForm = () => {
   const {errors, handleBlur, handleChange, handleSubmit, touched, values} = useFormik({
     initialValues: initialValues1,
