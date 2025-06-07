@@ -1,27 +1,43 @@
 import NavBar from "../common/NavBar";
 import {useFormik} from 'formik'
 import { initialValues, LoginSchema } from "../constant/Data";
+import axios from 'axios'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState([])
 
- const {errors, values, touched, handleChange, handleSubmit, handleBlur} = useFormik({
+  const loginUser = async (values) => {
+  try {
+      axios.post("http://localhost:8000/login", values).then((res) => {
+        if(res?.status === 200){
+          console.log(res?.data);
+          setUser(res?.data);
+          navigate("/")
+        }
+      })
+  } catch (error) {
+    console.log(error);
+  }
+  }
+  const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginSchema,
-    onSubmit: (values, actions) => {
-      console.log(values);
-
-      actions.resetForm()
-      
+    onSubmit: (values) => {
+      formik.resetForm();
+      loginUser(values);
     },
   })
-  // console.log(errors);
 
 
   return (
     <div>
       <NavBar />
       <div className="bg-[#555] h-[609px]">
-        <form onSubmit={handleSubmit} className="flex justify-center items-center h-full">
+        <form onSubmit={formik.handleSubmit} className="flex justify-center items-center h-full">
           <div className="flex flex-col justify-center items-center gap-[40px] h-[100%] text-center ">
             <h1 className="text-5xl font-bold text-white">Login Form</h1>
 
@@ -33,11 +49,11 @@ const LoginForm = () => {
                 id="email"
                 className="w-[400px] p-[10px] m-1 rounded-lg border-none font-sans font-semibold"
                 placeholder="Enter Your Email Here!"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
               />
-              {errors.email && touched.email ? (<p className="text-red-600 flex justify-start ml-3">{errors.email}</p>) : null}
+              {formik.errors.email && formik.touched.email ? (<p className="text-red-600 flex justify-start ml-3">{formik.errors.email}</p>) : null}
                </div>
               <div>
               <label htmlFor="password" className=" font-semibold flex flex-col items-start ml-2 ">Enter Password :</label> 
@@ -47,12 +63,12 @@ const LoginForm = () => {
                 type="password"
                 className="w-[400px] p-[10px] m-1 rounded-lg border-none font-sans font-semibold "
                 placeholder="Enter Your Password Here!"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
               />
 
-              {errors.password && touched.password ? (<p className="text-red-600 flex justify-start ml-3">{errors.password}</p>) : null}
+              {formik.errors.password && formik.touched.password ? (<p className="text-red-600 flex justify-start ml-3">{formik.errors.password}</p>) : null}
                </div>
                <div>
               <label htmlFor="confirmPassword" className=" font-semibold flex flex-col items-start ml-2">Re-enter The Password :</label> 
@@ -62,11 +78,11 @@ const LoginForm = () => {
                 type="password"
                 className="w-[400px] p-[10px] m-1 rounded-lg border-none font-sans font-semibold "
                 placeholder="Enter Your Password Here!"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.confirmPassword}
               />
-              {errors.confirmPassword && touched.confirmPassword ?(<p className="text-red-600 flex justify-start ml-3">{errors.confirmPassword}</p>) : null}
+              {formik.errors.confirmPassword && formik.touched.confirmPassword ?(<p className="text-red-600 flex justify-start ml-3">{formik.errors.confirmPassword}</p>) : null}
             </div>
             </div>
 

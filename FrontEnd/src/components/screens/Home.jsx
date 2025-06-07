@@ -1,5 +1,5 @@
-import React from 'react'
 import NavBar from '../common/NavBar'
+import UserData from '../constant/UserData'
 
 
 const Home = () => {
@@ -14,7 +14,6 @@ const Home = () => {
             <p className='font-medium'>Transform your body and mind with state-of-the-art equipment, expert trainers, and a supportive fitness community. Whether you're a beginner or a pro, we help you crush your goals — one rep at a time.</p>
             </div> 
          </div>
-    
     </>
   )
 }

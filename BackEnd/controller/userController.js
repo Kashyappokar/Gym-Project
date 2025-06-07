@@ -71,7 +71,7 @@ const loginUser = async(req , res) =>{
 
           user = {user ,token};
 
-          res.stauts(200).send(user)
+          res.status(200).send(user)
         }
       }
     }catch(err){
