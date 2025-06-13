@@ -7,7 +7,7 @@ const Home = () => {
     <>
          <NavBar />
          <div>
-            <img className='w-full h-[609px] ' src={"https://m.media-amazon.com/images/I/71t2iMRG+rL._UF1000,1000_QL80_.jpg"} alt="Gym Image BackGround" />
+            <img className='w-screen h-screen ' src={"https://m.media-amazon.com/images/I/71t2iMRG+rL._UF1000,1000_QL80_.jpg"} alt="Gym Image BackGround" />
             <div className='w-[500px] absolute top-[350px] left-[800px] bg-sky-50 py-[40px] px-[60px] rounded-[20px] '>
             <h1 className='text-3xl my-2 font-bold'>Unleash Your Potential</h1>
 

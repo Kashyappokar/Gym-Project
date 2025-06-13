@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div>
       <NavBar />
-      <div className='flex flex-col justify-center pt-[10px] items-center bg-[#555]'>
+      <div className='flex flex-col justify-center pt-[10px] items-center bg-[#555] '>
 
       <div className='bg-[#fff] rounded-[12px] m-[10px] flex w-[60%] gap-[80px] justify-center items-center py-5 px-5'>
         <div className='h-[250px] overflow-hidden w-[360px]'>

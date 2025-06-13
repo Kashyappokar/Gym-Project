@@ -42,7 +42,7 @@ const RegistrationForm = () => {
     
     <div>
       <NavBar />
-      <div className="bg-[#555] h-[609px] flex flex-col justify-center items-center">
+      <div className="bg-[#555] h-screen flex flex-col justify-center items-center">
     {!isSubmitted ? (
         <form onSubmit={formik.handleSubmit}>
           <div className="flex flex-col justify-center items-center gap-[40px] h-[100%] text-center ">
@@ -120,10 +120,10 @@ const RegistrationForm = () => {
               </div>
             </div>
 
-            <div className="">
+            <div>
               <button
                 type="submit"
-                className="bg-blue-800 text-white rounded-md py-[10px] px-[40px] text-lg font-semibold hover:bg-blue-700 transition-all"
+                className="bg-blue-800 text-white rounded-md py-[10px] px-[40px] text-lg font-semibold hover:bg-blue-700 transition-all active:bg-blue-500"
               >
                 Submit
               </button>
